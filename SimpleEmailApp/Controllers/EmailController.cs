@@ -13,22 +13,17 @@ namespace SimpleEmailApp.Controllers
 
     public class EmailController : ControllerBase
     {
-        [HttpPatch]
-        public IActionResult SendEmail(string body)
+        private readonly IEmailService _emailService;
+
+        public EmailController(IEmailService emailService) 
         {
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("colin.mayert@ethereal.email"));
-            email.To.Add(MailboxAddress.Parse("colin.mayert@ethereal.email"));
-            email.Subject = "Test Email Subject";
-            email.Body = new TextPart(TextFormat.Html) { Text = body };
+            this._emailService = emailService;
+        }
 
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.ethereal.email", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("colin.mayert@ethereal.email", "FJUamEX9xNEhvusV7h");
-            smtp.Send(email);
-            smtp.Disconnect(true);
-
-
+        [HttpPost]
+        public IActionResult SendEmail(EmailDto request)
+        {
+            _emailService.SendEmail(request);
             return Ok();
         }
 

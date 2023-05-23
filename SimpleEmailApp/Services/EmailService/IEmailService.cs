@@ -1,10 +1,9 @@
-﻿using namespace SimpleEmailApp;
+﻿using SimpleEmailApp.Models;
 
-global namespace SimpleEmailApp.Services.EmailService
+namespace SimpleEmailApp.Services.EmailService
 {
-	public interface IEmailService
-	{
-
-	}
+    public interface IEmailService
+    {
+        void SendEmail(EmailDto request);
+    }
 }
-
