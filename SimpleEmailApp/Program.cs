@@ -13,6 +13,21 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 
+Console.WriteLine("Please enter your username:");
+var username = Console.ReadLine();
+
+Console.WriteLine("Please enter your password:");
+var password = Console.ReadLine();
+
+Console.WriteLine("Please enter your password:");
+var recipient = Console.ReadLine();
+
+Console.WriteLine("Please enter the subject of your email:");
+var subject = Console.ReadLine();
+
+Console.WriteLine("Please enter the body of your email:");
+var body = Console.ReadLine();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
