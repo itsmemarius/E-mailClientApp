@@ -1,4 +1,4 @@
-#Welcome to my Email Service Application! 
+# Welcome to my Email Service Application! 
 
 This application is used to send emails using an ASP.NET Core dependency injection system. It allows developers to create custom controllers, Endpoints API Explorer, Swagger/OpenAPI, custom (scoped) instance of an EmailService, middleware for HTTPS redirection and authorization, and maps controllers. 
 
