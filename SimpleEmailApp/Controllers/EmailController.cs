@@ -5,6 +5,7 @@ using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace SimpleEmailApp.Controllers
 {
@@ -23,7 +24,32 @@ namespace SimpleEmailApp.Controllers
         [HttpPost]
         public IActionResult SendEmail(EmailDto request)
         {
-            _emailService.SendEmail(request);
+            Console.WriteLine("Please enter your username:");
+            var username = Console.ReadLine();
+
+            Console.WriteLine("Please enter your password:");
+            var password = Console.ReadLine();
+
+            Console.WriteLine("Please enter your password:");
+            var recipient = Console.ReadLine();
+
+            Console.WriteLine("Please enter the subject of your email:");
+            var subject = Console.ReadLine();
+
+            Console.WriteLine("Please enter the body of your email:");
+            var body = Console.ReadLine();
+
+
+
+            EmailDto emailDto = new EmailDto()
+            {
+                To = recipient,
+                Subject = subject,
+                Body = body
+            };
+
+            _emailService.SendEmail(emailDto);
+
             return Ok();
         }
 
